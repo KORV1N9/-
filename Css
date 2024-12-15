@@ -1,0 +1,38 @@
+/* Основні стилі для сайту
+*/body {
+    font-family: Arial, sans-serif;    margin: 0;
+    padding: 0;    line-height: 1.6;
+}
+/* Шапка */
+header {    background: #333;
+    color: #fff;    padding: 1rem 0;
+    text-align: center;}
+header h1 {
+    margin: 0;}
+nav ul {
+    list-style: none;    padding: 0;
+}
+nav ul li {    display: inline;
+    margin: 0 15px;}
+nav ul li a {
+    color: #fff;    text-decoration: none;
+}
+/* Основний контент */main {
+    padding: 20px;}
+
+section {    margin: 20px 0;
+}
+/* Сітка для моделей мотоциклів */.models-grid {
+    display: flex;    gap: 20px;
+}
+.model-card {    border: 1px solid #ccc;
+    border-radius: 10px;    padding: 15px;
+    text-align: center;    width: 30%;
+}
+.model-card img {    max-width: 100%;
+    border-radius: 10px;}
+/* Футер */
+footer {    background: #333;
+    color: #fff;    text-align: center;
+    padding: 1rem 0;    margin-top: 20px;
+}
