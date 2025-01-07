@@ -1,38 +1,171 @@
-/* Основні стилі для сайту
-*/body {
-    font-family: Arial, sans-serif;    margin: 0;
-    padding: 0;    line-height: 1.6;
+:root {
+    --primary-color: #ff4d4d;
+    --secondary-color: #333;
+    --accent-color: #2196F3;
 }
-/* Шапка */
-header {    background: #333;
-    color: #fff;    padding: 1rem 0;
-    text-align: center;}
-header h1 {
-    margin: 0;}
-nav ul {
-    list-style: none;    padding: 0;
-}
-nav ul li {    display: inline;
-    margin: 0 15px;}
-nav ul li a {
-    color: #fff;    text-decoration: none;
-}
-/* Основний контент */main {
-    padding: 20px;}
 
-section {    margin: 20px 0;
+/* Загальні стилі */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
 }
-/* Сітка для моделей мотоциклів */.models-grid {
-    display: flex;    gap: 20px;
+
+/* Анімація для хедера */
+header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    animation: slideDown 0.5s ease;
 }
-.model-card {    border: 1px solid #ccc;
-    border-radius: 10px;    padding: 15px;
-    text-align: center;    width: 30%;
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
 }
-.model-card img {    max-width: 100%;
-    border-radius: 10px;}
-/* Футер */
-footer {    background: #333;
-    color: #fff;    text-align: center;
-    padding: 1rem 0;    margin-top: 20px;
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* Навігація */
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0.5rem 0;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Картки мотоциклів */
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.model-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.model-card:hover {
+    transform: translateY(-10px);
+}
+
+.model-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.model-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Кнопка купівлі */
+.buy-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buy-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* Форма контактів */
+#contactForm {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Адаптивний дизайн */
+@media (max-width: 768px) {
+    .models-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Додаємо відступ для основного контенту */
+main {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* Оновлюємо стилі для секцій */
+section {
+    padding-top: 20px;
+}
+
+/* Забезпечуємо правильне позиціонування при переході по якорям */
+html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
 }
